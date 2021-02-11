@@ -1,0 +1,10 @@
+<h1><%= @contact.name %></h1>
+<p>Category: <%= @contact.category.name %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_contact_path(@contact) %></li>
+  <li><%= link_to "Destroy", contact_path(@contact),
+    method: :delete,
+    data: { confirm: "Are you sure?" } %>
+  </li>
+</ul>

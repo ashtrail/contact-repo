@@ -1,0 +1,14 @@
+<%= form_with model: contact do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <%= form.collection_select :category_id, Category.order(:name), :id, :name, include_blank: false %>
+    <% contact.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

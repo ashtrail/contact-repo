@@ -3,5 +3,6 @@ FactoryBot.define do
     name { 'John Doe' }
     category
     common_interests { [] }
+    contact_groups { [] }
   end
 end

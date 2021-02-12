@@ -8,4 +8,5 @@ Rails
     resources :contacts
     resources :categories
     resources :common_interests
+    resources :contact_groups
   end

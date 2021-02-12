@@ -41,6 +41,20 @@ RSpec.feature 'Contacts CRUD', type: :feature do
       expect(page).to have_content('Ping Pong')
       expect(page).to have_content('Cinema')
     end
+
+    scenario 'show common interests' do
+      contact_groups = [
+        create(:contact_group, name: 'Book Club'),
+        create(:contact_group, name: 'Anime Fans'),
+        create(:contact_group, name: 'Study Group'),
+      ]
+      contact = create(:contact, contact_groups: contact_groups)
+
+      visit contact_path(contact)
+      expect(page).to have_content('Book Club')
+      expect(page).to have_content('Anime Fans')
+      expect(page).to have_content('Study Group')
+    end
   end
 
   context 'Update Contact' do

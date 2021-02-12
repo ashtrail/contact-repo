@@ -3,13 +3,20 @@
 
 <% unless @contact.common_interests.empty? %>
   <h2>Common Interests</h2>
-
   <ul>
     <% @contact.common_interests.each do |ci| %>
       <li> <%= link_to ci.name, ci %> </li>
     <% end %>
   </ul>
+<% end %>
 
+<% unless @contact.contact_groups.empty? %>
+  <h2>Groups</h2>
+  <ul>
+    <% @contact.contact_groups.each do |group| %>
+      <li> <%= link_to group.name, group %> </li>
+    <% end %>
+  </ul>
 <% end %>
 
 <ul>

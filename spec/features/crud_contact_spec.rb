@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature "Contacts CRUD", type: :feature do
+  let(:contact_name) { 'Midoriya Izuku' }
+
   context "Create Contact" do
     before(:each) do
       create(:category, name: 'Friend')
@@ -9,11 +11,11 @@ RSpec.feature "Contacts CRUD", type: :feature do
 
     scenario 'valid inputs' do
       visit new_contact_path
-      fill_in 'Name', with: 'John Doe'
+      fill_in 'Name', with: contact_name
       select('Family', from: 'contact[category_id]')
       click_on 'Create Contact'
       visit contacts_path
-      expect(page).to have_content('John Doe')
+      expect(page).to have_content(contact_name)
     end
 
     scenario 'invalid inputs' do
@@ -27,23 +29,26 @@ RSpec.feature "Contacts CRUD", type: :feature do
 
   context "Update Contact" do
     scenario 'valid inputs' do
-      initial_name = 'Midoriya Izuku'
+      contact = create(:contact, name: contact_name)
       updated_name = 'Shigaraki Tomura'
-      contact = create(:contact, name: initial_name)
 
       visit edit_contact_path(contact)
       fill_in 'Name', with: updated_name
       click_on 'Update Contact'
-      expect(page).to_not have_content(initial_name)
+      expect(page).to_not have_content(contact_name)
       expect(page).to have_content(updated_name)
     end
+  end
 
-    scenario 'invalid inputs' do
-      contact = create(:contact)
+  context "Delete Contact" do
+    scenario 'success' do
+      contact = Contact.create!(name: contact_name, category: create(:category))
+      visit contacts_path
+      expect(page).to have_content(contact_name)
       visit edit_contact_path(contact)
-      fill_in 'Name', with: ''
-      click_on 'Update Contact'
-      expect(page).to have_content("Name can't be blank")
+      click_on 'Destroy'
+      visit contacts_path
+      expect(page).not_to have_content(contact_name)
     end
   end
 end

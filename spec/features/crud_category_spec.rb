@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.feature "Categories CRUD", type: :feature do
+RSpec.feature 'Categories CRUD', type: :feature do
   let(:category_name) { 'Family' }
 
-  context "Create Category" do
+  context 'Create Category' do
     scenario 'valid inputs' do
       visit new_category_path
       fill_in 'Name', with: category_name
@@ -20,7 +20,7 @@ RSpec.feature "Categories CRUD", type: :feature do
     end
   end
 
-  context "Update Category" do
+  context 'Update Category' do
     scenario 'valid inputs' do
       category = create(:category, name: category_name)
       updated_name = 'Professional'
@@ -33,7 +33,7 @@ RSpec.feature "Categories CRUD", type: :feature do
     end
   end
 
-  context "Delete Category" do
+  context 'Delete Category' do
     scenario 'success' do
       category = Category.create!(name: category_name)
       visit categories_path

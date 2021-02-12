@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :contact do
-    name { "John Doe" }
+    name { 'John Doe' }
     category
     common_interests { [] }
   end

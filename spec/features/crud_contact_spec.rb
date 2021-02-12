@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.feature "Contacts CRUD", type: :feature do
+RSpec.feature 'Contacts CRUD', type: :feature do
   let(:contact_name) { 'Midoriya Izuku' }
 
-  context "Create Contact" do
+  context 'Create Contact' do
     before(:each) do
       create(:category, name: 'Friend')
       create(:category, name: 'Family')
@@ -27,8 +27,8 @@ RSpec.feature "Contacts CRUD", type: :feature do
     end
   end
 
-  context "Read Contact" do
-    scenario "show common interests" do
+  context 'Read Contact' do
+    scenario 'show common interests' do
       common_interests = [
         create(:common_interest, name: 'Scuba Diving'),
         create(:common_interest, name: 'Ping Pong'),
@@ -43,7 +43,7 @@ RSpec.feature "Contacts CRUD", type: :feature do
     end
   end
 
-  context "Update Contact" do
+  context 'Update Contact' do
     scenario 'valid inputs' do
       contact = create(:contact, name: contact_name)
       updated_name = 'Shigaraki Tomura'
@@ -56,7 +56,7 @@ RSpec.feature "Contacts CRUD", type: :feature do
     end
   end
 
-  context "Delete Contact" do
+  context 'Delete Contact' do
     scenario 'success' do
       contact = Contact.create!(name: contact_name, category: create(:category))
       visit contacts_path

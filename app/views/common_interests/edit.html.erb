@@ -1,0 +1,9 @@
+<h1>Editing Common Interest</h1>
+
+<%= render 'form', common_interest: @common_interest %>
+
+<%= button_to 'Destroy', common_interest_path(@common_interest), method: :delete, data: { confirm: 'Are you sure?' } %>
+<br />
+<br />
+<%= link_to 'Show', @common_interest %> |
+<%= link_to 'Back', common_interests_path %>

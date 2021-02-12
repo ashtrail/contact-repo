@@ -1,5 +1,16 @@
 <h1><%= @contact.name %></h1>
-<p>Category: <%= @contact.category.name %></p>
+<p>Category: <%= link_to @contact.category.name, @contact.category %></p>
+
+<% unless @contact.common_interests.empty? %>
+  <h2>Common Interests</h2>
+
+  <ul>
+    <% @contact.common_interests.each do |ci| %>
+      <li> <%= link_to ci.name, ci %> </li>
+    <% end %>
+  </ul>
+
+<% end %>
 
 <ul>
   <li><%= link_to "Edit", edit_contact_path(@contact) %></li>

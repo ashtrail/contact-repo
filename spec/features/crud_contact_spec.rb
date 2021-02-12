@@ -27,6 +27,22 @@ RSpec.feature "Contacts CRUD", type: :feature do
     end
   end
 
+  context "Read Contact" do
+    scenario "show common interests" do
+      common_interests = [
+        create(:common_interest, name: 'Scuba Diving'),
+        create(:common_interest, name: 'Ping Pong'),
+        create(:common_interest, name: 'Cinema'),
+      ]
+      contact = create(:contact, common_interests: common_interests)
+
+      visit contact_path(contact)
+      expect(page).to have_content('Scuba Diving')
+      expect(page).to have_content('Ping Pong')
+      expect(page).to have_content('Cinema')
+    end
+  end
+
   context "Update Contact" do
     scenario 'valid inputs' do
       contact = create(:contact, name: contact_name)

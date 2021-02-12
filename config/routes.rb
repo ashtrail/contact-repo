@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   resources :contacts
   resources :categories
+  resources :common_interests
 end

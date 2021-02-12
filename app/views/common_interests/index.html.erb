@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Common Interests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @common_interests.each do |common_interest| %>
+      <tr>
+        <td><%= common_interest.name %></td>
+        <td><%= link_to 'Show', common_interest %></td>
+        <td><%= link_to 'Edit', edit_common_interest_path(common_interest) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Common Interest', new_common_interest_path %>

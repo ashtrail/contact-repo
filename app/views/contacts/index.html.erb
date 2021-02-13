@@ -1,12 +1,26 @@
 <h1>Contacts</h1>
 
-<ul>
-  <% @contacts.each do |contact| %>
-    <li>
-        <%= link_to contact.name, contact %>
-        <p>Category: <%= contact.category.name %></p>
-    </li>
-  <% end %>
-</ul>
+<table class="table is-hoverable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Common Interests</th>
+      <th>Groups</th>
+      <th>Last Contact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contacts.sort_by { |c| c.category.name }.each do |contact| %>
+      <tr>
+        <td><%= link_to contact.name, contact %></td>
+        <td> <%= contact.category.name %> </td>
+        <td> <%= contact.common_interests.map {|c| c.name }.join(", ") %> </td>
+        <td> <%= contact.contact_groups.map {|g| g.name }.join(", ") %> </td>
+        <td>N/A</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<%= link_to "New Contact", new_contact_path %>
+<%= link_to "New Contact", new_contact_path, class: "button is-link" %>

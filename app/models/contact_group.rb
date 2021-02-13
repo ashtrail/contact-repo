@@ -4,6 +4,6 @@ class ContactGroup < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   def last_contact
-    read_attribute(:last_contact) || 'N/A'
+    self[:last_contact] || 'N/A'
   end
 end

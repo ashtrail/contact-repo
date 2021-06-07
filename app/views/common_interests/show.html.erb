@@ -1,9 +1,24 @@
-<p id="notice"><%= notice %></p>
+<h1 class="subtitle is-5">Common Interest</h1>
+<h1 class="title is-2"><%= @common_interest.name %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @common_interest.name %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Contacts who share this interest</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @common_interest.contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.name %></td>
+        <td><%= link_to 'Show', contact %></td>
+        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_common_interest_path(@common_interest) %> |
 <%= link_to 'Back', common_interests_path %>

@@ -2,7 +2,11 @@
 
 <%= render 'form', common_interest: @common_interest %>
 
-<%= button_to 'Destroy', common_interest_path(@common_interest), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= button_to 'Destroy',
+  common_interest_path(@common_interest),
+  method: :delete,
+  class: "button is-danger",
+  data: { confirm: 'Are you sure?' } %>
 <br />
 <br />
 <%= link_to 'Show', @common_interest %> |

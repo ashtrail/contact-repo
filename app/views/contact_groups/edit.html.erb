@@ -2,7 +2,10 @@
 
 <%= render 'form', contact_group: @contact_group %>
 
-<%= button_to 'Destroy', contact_group_path(@contact_group), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= button_to 'Destroy', contact_group_path(@contact_group),
+  method: :delete,
+  class: "button is-danger",
+  data: { confirm: 'Are you sure?' } %>
 <br />
 <br />
 <%= link_to 'Show', @contact_group %> |

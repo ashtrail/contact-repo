@@ -1,9 +1,24 @@
-<h1>Category: <%= @category.name %></h1>
+<h1 class="subtitle is-5">Category</h1>
+<h1 class="title is-2"><%= @category.name %></h1>
 
-<ul>
-  <li><%= link_to "Edit", edit_category_path(@category) %></li>
-  <li><%= link_to "Destroy", category_path(@category),
-    method: :delete,
-    data: { confirm: "Are you sure?" } %>
-  </li>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Category Members</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @category.contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.name %></td>
+        <td><%= link_to 'Show', contact %></td>
+        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

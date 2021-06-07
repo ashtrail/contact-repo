@@ -1,14 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @contact_group.name %>
-</p>
+<h1 class="subtitle is-5">Group</h1>
+<h1 class="title is-2"><%= @contact_group.name %></h1>
 
 <p>
   <strong>Last contact:</strong>
   <%= @contact_group.last_contact %>
 </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group Members</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contact_group.contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.name %></td>
+        <td><%= link_to 'Show', contact %></td>
+        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_contact_group_path(@contact_group) %> |
 <%= link_to 'Back', contact_groups_path %>

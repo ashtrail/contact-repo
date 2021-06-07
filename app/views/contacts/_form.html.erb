@@ -1,14 +1,19 @@
-<%= form_with model: contact do |form| %>
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-    <%= form.collection_select :category_id, Category.order(:name), :id, :name, include_blank: false %>
-    <% contact.errors.full_messages_for(:name).each do |message| %>
-      <div><%= message %></div>
+<div class="columns">
+  <div class="column is-half">
+    <%= bulma_form_with model: contact do |form| %>
+      <div>
+        <%= form.text_field :name %>
+        <div class="select">
+          <%= form.collection_select :category_id, Category.order(:name), :id, :name, include_blank: false %>
+        </div>
+        <% contact.errors.full_messages_for(:name).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= form.submit nil, class: "button is-primary mt-3" %>
+      </div>
     <% end %>
   </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

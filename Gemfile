@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'prettier'
 # CSS framework
 gem "bulma-rails", "~> 0.9.1"
+gem 'bulma_form_builder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

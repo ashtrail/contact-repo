@@ -1,24 +1,7 @@
-# README
+# Contact Repo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Dashboard](./ContactRepoDashboard.png)
 
-Things you may want to cover:
+This is a basic CRUD app to keep track of your contacts, built with rails, rpsec, sqlite and bulma. I made it mainly as a way to learn rails.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If you're actually interested in a similar kind of tool you'd probably be better off with some sort of CRM. From what I've seen [Notion](https://www.notion.so/) might be a good solution with its intuitive databases.
